@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MULA Landing Page (Next.js App Router)
 
-## Getting Started
+This folder contains the frontend implementation and PRD for the MULA landing page.
 
-First, run the development server:
+## Add to your existing project
+
+Copy these folders/files into the root of your existing Next.js project, merging the folders:
+
+- `app/page.tsx`
+- `app/layout.tsx`
+- `app/globals.css`
+- `components/`
+- `lib/site-config.ts`
+
+The files use the `@/` import alias, which is the standard alias in a new Next.js app created with the default setup. If your project does not have it, configure `baseUrl`/`paths` in `tsconfig.json` or change the imports to relative paths.
+
+## Existing logo assets
+
+The code references:
+
+- `/logogram.png`
+- `/logotype.png` (reserved for pages that need the horizontal logo)
+
+Keep your supplied MULA logo files inside `public/`. The code currently uses the logogram in the header and footer. If your actual extension differs, update `logogramSrc` and `logotypeSrc` in `lib/site-config.ts`.
+
+## Replace the placeholders
+
+- `components/hero-section.tsx`: replace the CSS phone mockups with final hero artwork when ready.
+- `components/template-catalog.tsx`: replace `TemplateArtwork` with actual template cover images and update the `templates` array.
+- `components/how-it-works.tsx`: replace the decorative botanical slot with a final decorative asset if desired.
+- `lib/site-config.ts`: set the official WhatsApp and social URLs.
+
+## Run locally
+
+From your existing project folder:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The implementation uses React state and native browser elements only. No additional UI or icon package is required. `next/font/google` is used for Manrope and Cormorant Garamond; the first build needs access to Google's font service. If you prefer local font files, put them in `public/fonts` and switch the font declarations in `app/layout.tsx` to `next/font/local`.
